@@ -1,0 +1,124 @@
+=dbg
+  outline: 1px solid red
+
+=clearfix
+  *zoom: 1
+  &:before,
+  &:after
+    display: table
+    content: ""
+  &:after
+    clear: both
+
+.clearfix
+  +clearfix
+
+// Border Radius
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+// Drop shadows
+=box-shadow($shadow)
+  -webkit-box-shadow: $shadow
+  -moz-box-shadow: $shadow
+  box-shadow: $shadow
+
+  // BACKGROUNDS
+// --------------------------------------------------
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+=translucent-background($color: $white, $alpha: 1)
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+
+=translucent-border($color: $white, $alpha: 1)
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+  +background-clip(padding-box)
+
+// Gradient Bar Colors for buttons and alerts
+=gradientBar($primaryColor, $secondaryColor)
+  +gradient-vertical($primaryColor, $secondaryColor)
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%)
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fade-in(rgba(0, 0, 0, 0.1), 0.15)
+
+// Gradients
+=gradient-horizontal($startColor: #555555, $endColor: #333333)
+  background-color: $endColor
+  background-image: -moz-linear-gradient(left, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient(left, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor))
+  // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient(left, $startColor, $endColor)
+  // Le standard
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=1)
+  // IE9 and down
+
+=gradient-vertical($startColor: #555555, $endColor: #333333)
+  background-color: mix($startColor, $endColor, 60%)
+  background-image: -moz-linear-gradient(top, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient(top, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor))
+  // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient(top, $startColor, $endColor)
+  // The standard
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0)
+  // IE9 and down
+
+=gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
+  background-color: $endColor
+  background-repeat: repeat-x
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor)
+  // The standard
+
+=gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
+  background-color: mix($midColor, $endColor, 80%)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor))
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor)
+  background-image: -ms-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-repeat: no-repeat
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0)
+  // IE9 and down, gets no color-stop at all for proper fallback
+
+=gradient-radial($innerColor: #555555, $outerColor: #333333)
+  background-color: $outerColor
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor))
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor)
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor)
+  background-image: -ms-radial-gradient(circle, $innerColor, $outerColor)
+  background-image: -o-radial-gradient(circle, $innerColor, $outerColor)
+  background-repeat: no-repeat
+
+=gradient-striped($color, $angle: -45deg)
+  background-color: $color
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -ms-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)

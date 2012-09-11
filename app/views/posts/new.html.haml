@@ -1,0 +1,29 @@
+%h2 New Post
+
+- provide(:title, "Create an Account")
+
+= form_for(@post) do |f|
+  %fieldset
+    
+    .field.title
+      = f.label :title, 'Title'
+      = f.text_field :title
+
+    .field
+      = f.label :body, 'Body'
+      = f.text_area :body
+
+    .field
+      = f.label :link, 'Link'
+      = f.text_field :link
+
+    .field
+      = f.label :tags, 'Tags'
+      = f.text_field :tags
+
+    .field.checkfield
+      = f.check_box :published
+      = f.label :published, 'Published'
+
+    .form-actions
+      = f.submit :class => 'btn btn-primary'

@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %meta{ :content => "width=device-width", :name => "viewport" }
+
+    %title= full_title yield(:title)
+    
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+    = yield :head
+  
+  %body{ :id => "page-#{params[:controller]}", :class => "#{body_class(yield(:extra_body_classes))}" }
+    %header#header
+      .inner
+        %h1= link_to 'Michael Whalen', '/'
+        %p.about
+          the home of #{link_to '@whalesalad', 'http://twitter.com/whalesalad', :target => '_blank'}, a designer, hacker
+          %br/
+          and international vagabond currently in DC
+
+    %section.wrapper
+
+      = yield
+    
+    = javascript_include_tag "application"

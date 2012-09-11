@@ -5,6 +5,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'pg'
 gem 'haml'
 gem 'thin'
+gem 'stringex'
+gem 'kaminari'
 
 # Gems used only for assets and not in production
 group :assets do
