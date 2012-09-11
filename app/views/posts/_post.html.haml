@@ -6,5 +6,5 @@
     %p.post-meta
       Posted #{l post.created_at, :format => :long} in #{post.tag_string.to_sentence.html_safe}
 
-    %section.post-body
-      = post.mkdown.html_safe
+  %section.post-body
+    = post.mkdown.html_safe
