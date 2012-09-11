@@ -4,6 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
+#Ignore foreman env file?
+.env
+
+*.DS_Store
+
 # Ignore bundler config
 /.bundle
 
@@ -11,5 +16,15 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*
 /tmp
+
+/public/system/*
+.sass-cache/
+
+# Database config
+/config/database.yml
+
+# Ignore Solr data and process ident files
+/solr/data
+/solr/pids
