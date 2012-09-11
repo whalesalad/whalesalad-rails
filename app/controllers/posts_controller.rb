@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(:published => false).order('created_at DESC').page(params[:page]).per(15)
 
+    @title = 'welcome'
+
     respond_to do |format|
       format.html
       format.json { render json: @posts }
@@ -49,6 +51,10 @@ class PostsController < ApplicationController
   def tagged
     @tag = Tag.find_by_slug(params[:tag])
     @posts = @tag.posts
+
+    @title = "posts tagged with #{@tag.name}"
+
+    render 'index'
   end
 
 end

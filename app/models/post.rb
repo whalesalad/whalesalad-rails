@@ -16,6 +16,12 @@ class Post < ActiveRecord::Base
     title
   end
 
+  def mkdown
+    require 'rdiscount'
+    markdown = RDiscount.new(self.body)
+    return markdown.to_html
+  end
+
   def tag_string
     if tags.present?
       return tags.map { |tag| "<a href=\"/tagged/#{tag.slug}/\">#{tag.name}</a>" }

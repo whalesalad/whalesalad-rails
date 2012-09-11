@@ -46,9 +46,10 @@ header#header
     p.about
       float: right
       color: $purple
-      font-size: 14px
+      font-size: 13px
       line-height: 17px
-      font-weight: 200
+      font-weight: 400
+      text-shadow: 0 0 3px $purpleGlow
       a
         color: $purple
         font-weight: 400
@@ -66,6 +67,35 @@ section.wrapper
 body.posts-new
   h2
     padding-left: 40px
+
+section.posts
+  article.post
+    h3.post-title
+      font-size: 24px
+      a
+        color: #444
+        &:hover
+          color: $pink
+          text-shadow: 0 0 3px $pinkGlow
+    p.post-meta
+      font-size: 14px
+      color: #909090
+      line-height: 30px
+      a
+        color: #909090
+        border-bottom: 1px dotted #CCC
+        &:hover
+          color: $purple
+          text-shadow: 0 0 3px $purpleGlow
+          border-bottom: none
+
+    section.post-body
+      margin: 10px 0
+      p
+        font-size: 14px
+        line-height: 21px
+        margin-bottom: 15px
+
 
 form
   fieldset

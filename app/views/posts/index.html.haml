@@ -1,12 +1,5 @@
-- provide :title, 'welcome'
+- provide :title, @title
 
-- @posts.each do |post|
-  %article
-    %header
-      %h3.post-title
-        = link_to post.title, post
-      %p.post-meta
-        Posted #{post.created_at} in #{post.tag_string.to_sentence.html_safe}
-
-      %p
-
+%section.posts
+  = render :partial => 'post', :collection => @posts
+    
