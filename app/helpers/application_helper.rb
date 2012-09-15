@@ -6,7 +6,13 @@ module ApplicationHelper
       classes.push extra
     end
 
+    classes.map! { |c| slashes_to_dash c }
+
     classes.join ' '
+  end
+
+  def body_id
+    "page-#{slashes_to_dash params[:controller]}"
   end
 
   def full_title(page_title)
@@ -16,4 +22,11 @@ module ApplicationHelper
     
     base_title
   end
+
+  private
+
+  def slashes_to_dash(value)
+    value.gsub(/\//, '-')
+  end
+
 end

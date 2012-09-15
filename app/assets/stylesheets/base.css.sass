@@ -1,5 +1,6 @@
 @import includes/variables
 @import includes/mixins
+@import admin
 
 *
   margin: 0
@@ -68,7 +69,7 @@ body.posts-new
   h2
     padding-left: 40px
 
-section.posts
+section.posts, section.detail
   article.post
     margin-bottom: 30px
     h3.post-title
@@ -96,47 +97,3 @@ section.posts
         font-size: 14px
         line-height: 21px
         margin-bottom: 15px
-
-
-form
-  fieldset
-    padding: 20px 40px
-    // border: 1px solid #CCC
-    border: none
-    background: #EEE
-    +border-radius(5px)
-
-    .field
-      margin-bottom: 20px
-      label
-        color: #999
-        text-shadow: 0 1px 0 #FFF
-        font-size: 13px
-        display: block
-        font-weight: 500
-        text-transform: uppercase
-        line-height: 22px
-      &.title
-        input[type="text"], textarea
-          font-weight: bold
-      &.checkfield
-        label
-          display: inline
-      input[type="text"], textarea
-        font-size: 14px
-        font-family: "Consolas"
-        width: 570px
-        padding: 10px
-        border: 1px solid #DDD
-        outline: none
-        +border-radius(3px)
-        color: #999
-        &:focus
-          color: #444
-          border: 1px solid $purple
-          +box-shadow(0 0 10px rgba(126,0,255, 0.5))
-      textarea
-        width: 550px
-        padding: 20px
-        line-height: 20px
-

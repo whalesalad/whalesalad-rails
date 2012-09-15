@@ -8,6 +8,12 @@ Whalesalad::Application.routes.draw do
 
   # Tags
   match "/tagged/:tag" => "posts#tagged", :as => "tag"
-  # match "/t/:tag/p/:page" => "posts#tagged"
+
+  # Admin
+  namespace :admin do
+    match '', :action => 'index'
+    resources :posts#, only: [:index, :show, :new, :create, :update, :edit, :destroy]
+    # resources :tags,  only: [:new, :create, :update, :edit, :destroy, :index]
+  end
   
 end

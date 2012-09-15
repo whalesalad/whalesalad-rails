@@ -9,16 +9,27 @@
     = csrf_meta_tags
     = yield :head
   
-  %body{ :id => "page-#{params[:controller]}", :class => "#{body_class(yield(:extra_body_classes))}" }
+  %body{ :id => body_id, :class => "#{body_class(yield(:extra_body_classes))}" }
     %header#header
       .inner
-        %h1= link_to 'Michael Whalen', '/'
+        %h1= link_to 'Michael Whalen', root_url
         %p.about
           the home of #{link_to '@whalesalad', 'http://twitter.com/whalesalad', :target => '_blank'}, a designer, hacker
           %br/
           and vagabond living in Washington, DC
 
     %section.wrapper
+      - if flash.present?
+        %section.messages
+          - flash.each do |name, msg|
+            %div{:class => "alert alert-#{name}"}
+              .message= msg if msg.is_a?(String)
+
+      - if @inside_admin
+        %section.admin-bar
+          %p.captain Welcome back Captain!
+          %p= link_to 'Admin', admin_path
+          %p.meta Today is #{l Date.today, :format => :long} • #{link_to 'Write a Post', new_admin_post_path}
 
       = yield
     
