@@ -15,7 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'font-awesome-rails'
+  gem 'asset_sync'
 end
 
 group :development, :test do
