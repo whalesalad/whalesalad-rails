@@ -17,39 +17,19 @@ class Admin::PostsController < AdminController
   end
 
   def create
-    if params[:post][:tags]
-      tags = []
-      
-      params[:post][:tags].split(",").each do |tag_name|
-        tags.append Tag.find_or_create_by_name(tag_name.strip)
-      end
-
-      params[:post][:tags] = tags
-    end
-
     @post = Post.new(params[:post])
     
     if @post.save
-      redirect_to [:admin, @post], notice: 'BOOM look at you blogging like a boss.'
+      redirect_to admin_posts_path, notice: 'BOOM look at you blogging like a boss.'
     else
       render action: "new"
     end
   end
 
   def update
-    if params[:post][:tags]
-      tags = []
-      
-      params[:post][:tags].split(",").each do |tag_name|
-        tags.append Tag.find_or_create_by_name(tag_name.strip)
-      end
-
-      params[:post][:tags] = tags
-    end
-
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Successfully updated post.'
-      redirect_to edit_admin_post_path(@post)
+      redirect_to admin_posts_path
     else
       render 'edit'
     end

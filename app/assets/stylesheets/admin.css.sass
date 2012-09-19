@@ -8,6 +8,11 @@ section.admin-bar
     font-size: 12px
     font-weight: bold
     text-transform: uppercase
+  p.details
+    font-size: 14px
+    line-height: 24px
+    a
+      font-weight: bold
 
 section.messages
   .alert
@@ -32,6 +37,24 @@ section.messages
       border-color: $infoBorder
       color: $infoText
 
+section.posts
+  ul.post-list
+    li
+      margin-bottom: 10px
+      list-style-type: square
+      h4
+        span.unpub
+          font-size: 12px
+          text-transform: uppercase
+          color: darken($pink, 20)
+          padding-left: 5px
+      span.meta
+        font-size: 13px
+
+
+body#page-admin-posts
+  h2
+    padding-left: 40px
 
 form
   fieldset

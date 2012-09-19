@@ -28,8 +28,8 @@
       - if @inside_admin
         %section.admin-bar
           %p.captain Welcome back Captain!
-          %p= link_to 'Admin', admin_path
-          %p.meta Today is #{l Date.today, :format => :long} • #{link_to 'Write a Post', new_admin_post_path}
+          %p.details
+            Today is #{l Date.today, :format => :long} &mdash; #{link_to 'Write a Post', new_admin_post_path} or return to #{link_to 'Admin Home', admin_path}
 
       = yield
     

@@ -2,9 +2,17 @@ class PostsController < ApplicationController
   respond_to :html, :xml, :json, :atom
 
   def index
-    @posts = Post.where(:published => true).order('created_at DESC').page(params[:page]).per(15)
-
     @title = 'welcome'
+
+    if params[:tag]
+      @tag = Tag.find_by_slug(params[:tag])
+      @base = @tag.posts
+      @title = "tagged #{@tag}"
+    else
+      @base = Post
+    end
+    
+    @posts = @base.where(:published => true).order('created_at DESC').page(params[:page]).per(15)
 
     respond_with @posts
   end

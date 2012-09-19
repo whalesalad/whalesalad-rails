@@ -23,6 +23,13 @@ module ApplicationHelper
     base_title
   end
 
+  def awesome_icon(icon, extra_class=nil)
+    unless extra_class.nil?
+      extra_class = " #{exra_class}"
+    end
+    "<i class=\"awesome-icon icon-#{icon}#{extra_class}\"></i>".html_safe
+  end
+
   private
 
   def slashes_to_dash(value)

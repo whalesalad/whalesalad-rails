@@ -1,5 +1,9 @@
 - provide :title, @title
 
+- if @tag.present?
+  %p.notice
+    You're browsing posts tagged with #{@tag}. #{link_to 'Return to safety ↩', :back}
+
 %section.posts
   = render :partial => 'post', :collection => @posts
     

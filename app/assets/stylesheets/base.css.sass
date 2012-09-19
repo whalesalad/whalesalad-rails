@@ -53,21 +53,49 @@ header#header
       text-shadow: 0 0 3px $purpleGlow
       a
         color: $purple
-        font-weight: 400
+        font-weight: 600
+        &:hover
+          color: darken($purple, 20)
+          // text-shadow: 0 0 3px darken($purpleGlow, 20)
+
 
 section.wrapper
   width: 680px
   margin: 0 auto
 
+  a
+    text-decoration: none
+    color: $pink
+    -webkit-transition: color 0.05s ease-in
+    transition: color 0.05s ease-in
+    &:hover
+      color: $purple
+      text-shadow: 0 0 3px $purpleGlow
+      border-bottom: none
+  
+  p.notice
+    background: #EEE
+    font-size: 13px
+    padding: 0 10px
+    line-height: 30px
+    margin-bottom: 15px
+    border: 1px solid darken(#EEE, 5)
+    color: #666
+    text-shadow: 0 1px 0 #FFF
+    +border-radius(5px)
+    a
+      color: #666
+      font-weight: 600
+      &:hover
+        color: #333
+        text-shadow: 0 1px 0 #FFF
+  
   h2
     font-weight: 200
     font-size: 30px
     line-height: 40px
     margin-bottom: 10px
 
-body.posts-new
-  h2
-    padding-left: 40px
 
 section.posts, section.detail
   article.post
@@ -76,6 +104,9 @@ section.posts, section.detail
       font-size: 24px
       a
         color: #444
+        &.permalink
+          margin-left: 5px
+          color: #777
         &:hover
           color: $pink
           text-shadow: 0 0 3px $pinkGlow

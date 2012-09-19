@@ -1,10 +1,16 @@
 %article{ :id => "post-#{post.id}", :class => 'post' }
   %header
     %h3.post-title
-      = link_to post.title, post
+      - if post.link?
+        = link_to post.title, post.link, :target => '_blank'
+        = link_to '∞', post, :class => 'permalink'
+      - else
+        = link_to post.title, post
     
     %p.post-meta
-      Posted #{l post.created_at, :format => :long} in #{post.tag_string.to_sentence.html_safe}
+      Posted #{l post.created_at, :format => :long}
+      - if post.tags.present?
+        in #{post.tag_string.to_sentence.html_safe}        
 
   %section.post-body
     = post.mkdown.html_safe

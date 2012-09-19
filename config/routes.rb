@@ -2,12 +2,12 @@ Whalesalad::Application.routes.draw do
   root :to => "posts#index"
 
   # Posts
-  resources :posts
-  # get "/p/:page" => "posts#index"
-  # get "/s/:slug" => "posts#show"
-
+  resources :posts, :only => [:index, :show] do
+    # get "/p/:page" => "posts#index"
+  end
+  
   # Tags
-  match "/tagged/:tag" => "posts#tagged", :as => "tag"
+  match "/tagged/:tag" => "posts#index", :as => "tagged"
 
   # Admin
   namespace :admin do

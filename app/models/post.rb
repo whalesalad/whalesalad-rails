@@ -1,10 +1,12 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :link, :slug, :published, :tags
+  attr_accessible :title, :body, :link, :slug, :published, :tag_names
 
   has_and_belongs_to_many :tags
 
-  validates :title, :presence => true
-  validates :body, :presence => true
+  attr_writer :tag_names
+  after_save :assign_tags
+
+  validates_presence_of :title, :body
 
   acts_as_url :title, :url_attribute => :slug, :sync_url => true
 
@@ -16,6 +18,10 @@ class Post < ActiveRecord::Base
     title
   end
 
+  def is_link?
+    @link.present?
+  end
+
   def mkdown
     require 'rdiscount'
     markdown = RDiscount.new(self.body)
@@ -23,8 +29,21 @@ class Post < ActiveRecord::Base
   end
 
   def tag_string
-    if tags.present?
-      return tags.map { |tag| "<a href=\"/tagged/#{tag.slug}/\">#{tag.name}</a>" }
+    tags.map { |tag| "<a href=\"/tagged/#{tag.slug}/\">#{tag.name}</a>" }
+  end
+
+  def tag_names
+    @tag_names || tags.map(&:name).join(', ')
+  end
+
+  private
+
+  def assign_tags
+    if @tag_names
+      self.tags = @tag_names.split(',').map do |name|
+        Tag.find_or_create_by_name(name.strip)
+      end
     end
   end
+
 end
