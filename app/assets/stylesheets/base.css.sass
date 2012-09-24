@@ -34,7 +34,6 @@ header#header
       float: left
       a
         display: block
-        width: 350px
         height: 35px
         line-height: 35px
         font-size: 40px
@@ -100,7 +99,7 @@ section.wrapper
 
 section.posts, section.detail
   article.post
-    margin-bottom: 30px
+    margin-bottom: 60px
     h3.post-title
       font-size: 24px
       a
@@ -129,3 +128,12 @@ section.posts, section.detail
         font-size: 14px
         line-height: 21px
         margin-bottom: 15px
+      blockquote
+        border-left: 5px solid #DDD
+        background: lighten(#EEE, 4)
+        padding: 20px
+        margin-bottom: 1em
+        font-style: italic
+        +border-radius(10px)
+        p:last-child
+          margin-bottom: 0
