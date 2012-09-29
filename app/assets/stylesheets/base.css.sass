@@ -1,6 +1,7 @@
 @import includes/variables
 @import includes/mixins
-@import admin
+@import includes/code
+// @import admin
 
 *
   margin: 0
@@ -10,7 +11,7 @@ html
   -webkit-font-smoothing: antialiased
 
 body
-  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-family: "proxima-nova", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
   color: #444
   background: #FFF
   padding-top: 220px
@@ -100,6 +101,7 @@ section.wrapper
 section.posts, section.detail
   article.post
     margin-bottom: 60px
+    
     h3.post-title
       font-size: 24px
       a
@@ -110,6 +112,7 @@ section.posts, section.detail
         &:hover
           color: $pink
           text-shadow: 0 0 3px $pinkGlow
+    
     p.post-meta
       font-size: 14px
       color: #909090
@@ -124,16 +127,27 @@ section.posts, section.detail
 
     section.post-body
       margin: 10px 0
+      
+      h3
+        margin: 2em 0 1em 0
+
       p
         font-size: 14px
         line-height: 21px
         margin-bottom: 15px
+
       blockquote
-        border-left: 5px solid #DDD
-        background: lighten(#EEE, 4)
-        padding: 20px
+        p 
+          font: italic 300 20px/30px "chaparral-pro", "Georgia", "serif"
+
+        background: #efeab5 image-url('blockquote-bg.png') 0 11px repeat
+        border: 1px solid #c4be8e
+        box-shadow: 0 3px 0 #EEE
         margin-bottom: 1em
-        font-style: italic
-        +border-radius(10px)
+        +border-radius(5px)
+        padding: 20px
+        margin: 0 -20px 1em -20px
+        
+        
         p:last-child
           margin-bottom: 0

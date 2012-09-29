@@ -13,4 +13,4 @@
         in #{post.tag_string.to_sentence.html_safe}        
 
   %section.post-body
-    = post.mkdown.html_safe
+    = post.formatted.html_safe

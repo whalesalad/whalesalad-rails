@@ -8,6 +8,9 @@
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
     = yield :head
+
+    <script type="text/javascript" src="//use.typekit.net/hxb6llz.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   
   %body{ :id => body_id, :class => "#{body_class(yield(:extra_body_classes))}" }
     %header#header

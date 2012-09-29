@@ -7,7 +7,8 @@ gem 'haml'
 gem 'thin'
 gem 'stringex'
 gem 'kaminari'
-gem 'rdiscount'
+gem 'redcarpet'
+gem 'pygmentize'
 
 # Gems used only for assets and not in production
 group :assets do

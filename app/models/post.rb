@@ -22,10 +22,14 @@ class Post < ActiveRecord::Base
     @link.present?
   end
 
-  def mkdown
-    require 'rdiscount'
-    markdown = RDiscount.new(self.body)
-    return markdown.to_html
+  def format_markdown
+    require 'redcarpet'
+    redcarpet = Redcarpet::Markdown.new PygmentizeHTML, :fenced_code_blocks => true
+    return redcarpet.render self.body
+  end
+
+  def formatted
+    format_markdown
   end
 
   def tag_string
@@ -46,4 +50,11 @@ class Post < ActiveRecord::Base
     end
   end
 
+end
+
+class PygmentizeHTML < Redcarpet::Render::HTML
+  def block_code(code, language)
+    require 'pygmentize'
+    Pygmentize.process(code, language)
+  end
 end
