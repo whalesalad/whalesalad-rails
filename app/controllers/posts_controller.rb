@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       @base = Post
     end
     
-    @posts = @base.where(:published => true).order('created_at DESC').page(params[:page]).per(15)
+    @posts = @base.where(:published => true).order('created_at DESC').page(params[:page]).per(5)
 
     respond_with @posts
   end

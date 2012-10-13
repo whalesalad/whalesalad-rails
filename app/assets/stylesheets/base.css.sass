@@ -75,15 +75,11 @@ section.wrapper
       border-bottom: none
   
   p.notice
-    background: #EEE
+    +grey-rounded
     font-size: 13px
     padding: 0 10px
     line-height: 30px
     margin-bottom: 15px
-    border: 1px solid darken(#EEE, 5)
-    color: #666
-    text-shadow: 0 1px 0 #FFF
-    +border-radius(5px)
     a
       color: #666
       font-weight: 600
@@ -100,7 +96,7 @@ section.wrapper
 
 section.posts, section.detail
   article.post
-    margin-bottom: 60px
+    margin-bottom: 75px
     
     h3.post-title
       font-size: 24px
@@ -151,3 +147,17 @@ section.posts, section.detail
         
         p:last-child
           margin-bottom: 0
+
+nav.pagination
+  +grey-rounded
+  text-align: center
+  font-size: 13px
+  padding: 0 10px
+  line-height: 30px  
+  margin: 0 0 50px 0
+  span
+    padding: 0 5px
+    &.current
+      font-weight: bold
+    a
+      color: #666
