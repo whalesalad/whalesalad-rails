@@ -4,8 +4,6 @@ class Admin::PostsController < AdminController
 
   def index
     @posts = Post.order('created_at DESC')
-    # @posts = Post.recent.page(params[:page])
-    # @posts = Post.all
   end
 
   def new
@@ -13,7 +11,7 @@ class Admin::PostsController < AdminController
   end
 
   def edit
-
+    
   end
 
   def create
@@ -27,18 +25,18 @@ class Admin::PostsController < AdminController
   end
 
   def update
+    if params[:destroy]
+      flash[:notice] = "Successfully deleted #{@post}."
+      @post.destroy
+      redirect_to admin_posts_path and return
+    end
+    
     if @post.update_attributes(params[:post])
-      flash[:notice] = 'Successfully updated post.'
+      flash[:notice] = "Successfully updated #{@post}"
       redirect_to admin_posts_path
     else
       render 'edit'
     end
-  end
-
-  def destroy
-    @post.destroy
-    flash[:notice] = 'Successfully destroyed post.'
-    redirect_to admin_posts_url
   end
 
   protected

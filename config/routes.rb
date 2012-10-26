@@ -11,8 +11,8 @@ Whalesalad::Application.routes.draw do
   # Admin
   namespace :admin do
     match '', :action => 'index'
-    resources :posts#, only: [:index, :show, :new, :create, :update, :edit, :destroy]
-    # resources :tags,  only: [:new, :create, :update, :edit, :destroy, :index]
+
+    resources :posts, :only => [:index, :new, :edit, :create, :update]
   end
   
 end
