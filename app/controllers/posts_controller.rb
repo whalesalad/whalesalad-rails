@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   respond_to :html, :xml, :json, :atom
 
   def index
-    @title = 'the home of michael whalen'
+    @title = 'michael whalen &mdash; hacker, designer & vagabond'.html_safe
 
     if params[:tag]
       @tag = Tag.find_by_slug(params[:tag])
