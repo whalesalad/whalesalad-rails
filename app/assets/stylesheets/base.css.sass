@@ -7,14 +7,10 @@
   margin: 0
   padding: 0
 
-html
-  -webkit-font-smoothing: antialiased
-
 body
   font-family: "proxima-nova", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
   color: #444
   background: #FFF
-  // padding-top: 190px
 
 a
   text-decoration: none
@@ -22,12 +18,10 @@ a
   transition: 0.1s ease-in
 
 header#header
-  // top: 0
   width: 100%
   height: 140px
   margin-bottom: 40px
-  // background: rgba(255,255,255, 0.95)
-  background-image: -webkit-linear-gradient(left, $pink, $purple)
+  +gradient-horizontal($pink, $purple)
   .inner
     width: 680px
     margin: 0 auto
@@ -70,8 +64,6 @@ section.wrapper
   a
     text-decoration: none
     color: $pink
-    -webkit-transition: color 0.05s ease-in
-    transition: color 0.05s ease-in
     &:hover
       color: $purple
       text-shadow: 0 0 3px $purpleGlow
