@@ -25,3 +25,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 end
+
+group :production do
+  gem 'honeybadger'
+end

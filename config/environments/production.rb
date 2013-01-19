@@ -1,5 +1,10 @@
 Whalesalad::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  
+  # HONEYBADGER
+  Honeybadger.configure do |config|
+    config.api_key = ENV['HONEYBADGER_API_KEY']
+  end
 
   # Code is not reloaded between requests
   config.cache_classes = true
