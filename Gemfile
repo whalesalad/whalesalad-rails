@@ -27,5 +27,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'honeybadger'
+  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 end
