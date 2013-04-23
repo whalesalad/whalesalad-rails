@@ -1,6 +1,5 @@
 class Admin::PostsController < AdminController
-  before_filter :fetch_post, :only => [:show, :edit, :update, :destroy]
-  # cache_sweeper :post_sweeper, only: [:create, :update, :destroy]
+  before_filter :get_post, :only => [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.order('created_at DESC')
@@ -15,7 +14,7 @@ class Admin::PostsController < AdminController
   end
 
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
     
     if @post.save
       redirect_to admin_posts_path, notice: 'BOOM look at you blogging like a boss.'
@@ -31,7 +30,7 @@ class Admin::PostsController < AdminController
       redirect_to admin_posts_path and return
     end
     
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(post_params)
       flash[:notice] = "Successfully updated #{@post}"
       redirect_to admin_posts_path
     else
@@ -39,9 +38,13 @@ class Admin::PostsController < AdminController
     end
   end
 
-  protected
+  private
 
-  def fetch_post
+  def post_params
+    params.require(:post).permit(:title, :body, :link, :tag_names, :published)
+  end
+
+  def get_post
     @post = Post.find_by_slug(params[:id])
   end
 end

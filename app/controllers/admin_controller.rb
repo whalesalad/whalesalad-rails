@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :authenticate
-  layout 'admin'
+  before_filter :authenticate if Rails.env.production?
 
   def index
     redirect_to admin_posts_url
