@@ -32,10 +32,14 @@
       - if is_admin?
         %section.admin-bar
           %p.captain
-            Welcome back Captain! &mdash; Today is #{l Date.today, :format => :long}
+            Welcome back Captain! 
+            %small
+              Today is #{l Date.today, :format => :long}
           %p.details
-            #{link_to 'Write a Post', new_admin_post_path} or return to #{link_to 'Admin Home', admin_path}
+            = link_to 'Write a Post', new_admin_post_path
+            = link_to 'Admin Home', admin_path
 
       = yield
-
-    = render partial: 'layouts/analytics', :layout => false
+    
+    - unless is_admin?
+      = render partial: 'layouts/analytics', :layout => false

@@ -1,18 +1,32 @@
 section.admin-bar
   background: #EEE
-  padding: 10px
-  border-radius: 5px
-  border: 1px solid #DDD
-  margin: 0 0 20px 0
+  margin: 0 -30px 20px -30px
+  padding: 10px 30px
+  
   p.captain
-    font-size: 12px
     font-weight: bold
     text-transform: uppercase
+    line-height: 30px
+    small 
+      font-weight: normal
+      padding-left: 10px
+      color: #777
+  
   p.details
     font-size: 14px
     line-height: 24px
     a
+      +border-radius(3px)
+      display: inline-block
+      line-height: 22px
+      padding: 0 15px
+      background: #555
+      color: #FFF
       font-weight: bold
+      margin-right: 7px
+      &:hover
+        text-shadow: none
+        background: #333
 
 section.messages
   .alert
@@ -39,18 +53,44 @@ section.messages
 
 section.posts
   ul.post-list
+    margin: 0 -30px
     li
-      margin-bottom: 10px
-      list-style-type: square
-      h4
+      padding: 0 30px
+      padding-bottom: 15px
+      margin-bottom: 15px
+      border-bottom: 1px solid #EEE
+      list-style-type: none
+      h3
         span.unpub
+          display: inline-block
+          vertical-align: middle
           font-size: 12px
           text-transform: uppercase
-          color: darken($pink, 20)
-          padding-left: 5px
+          background: darken($pink, 10)
+          color: #FFF
+          padding: 0 5px
+          +border-radius(3px)
+      
       span.meta
+        color: #999
+        line-height: 22px
         font-size: 13px
 
+      p.tools
+        font-size: 13px
+        line-height: 26px
+        a
+          +border-radius(3px)
+          display: inline-block
+          line-height: 22px
+          padding: 0 15px
+          background: $purple
+          color: #FFF
+          font-weight: bold
+          margin-right: 7px
+          &:hover
+            text-shadow: none
+            background: darken($purple, 10)
 
 body#page-admin-posts
   h2

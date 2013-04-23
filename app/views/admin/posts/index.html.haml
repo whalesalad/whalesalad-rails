@@ -5,9 +5,16 @@
   %ul.post-list
     - for post in @posts
       %li 
-        %h4
-          = link_to post, edit_admin_post_path(post), :class => 'post-title'
+        %h3
+          #{post.title}
           - unless post.published?
             %span.unpub Unpublished!
-        %span.meta Authored #{time_ago_in_words post.created_at} ago on #{l post.created_at, :format => :long}
+
+        %span.meta #{time_ago_in_words post.created_at} ago &mdash; #{l post.created_at, :format => :long}
+
+        %p.tools
+          = link_to "Edit", edit_admin_post_path(post)
+          = link_to "View on Site", post_path(post), :target => '_blank'
+        
+        
     
