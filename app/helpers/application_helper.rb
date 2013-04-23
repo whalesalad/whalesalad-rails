@@ -30,6 +30,10 @@ module ApplicationHelper
     "<i class=\"awesome-icon icon-#{icon}#{extra_class}\"></i>".html_safe
   end
 
+  def is_admin?
+    params[:controller].split('/').first == 'admin'
+  end
+
   private
 
   def slashes_to_dash(value)

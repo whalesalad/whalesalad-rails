@@ -29,11 +29,12 @@
             %div{:class => "alert alert-#{name}"}
               .message= msg if msg.is_a?(String)
 
-      - if @inside_admin
+      - if is_admin?
         %section.admin-bar
-          %p.captain Welcome back Captain!
+          %p.captain
+            Welcome back Captain! &mdash; Today is #{l Date.today, :format => :long}
           %p.details
-            Today is #{l Date.today, :format => :long} &mdash; #{link_to 'Write a Post', new_admin_post_path} or return to #{link_to 'Admin Home', admin_path}
+            #{link_to 'Write a Post', new_admin_post_path} or return to #{link_to 'Admin Home', admin_path}
 
       = yield
 
