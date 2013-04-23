@@ -3,28 +3,21 @@ class PostsController < ApplicationController
 
   def index
     @title = 'michael whalen &mdash; hacker, designer & vagabond'.html_safe
+    @posts = Post
 
     if params[:tag]
       @tag = Tag.find_by_slug(params[:tag])
-      @base = @tag.posts
+      @posts = @tag.posts
       @title = "tagged #{@tag}"
-    else
-      @base = Post
     end
     
-    @posts = @base.where(:published => true).order('created_at DESC').page(params[:page]).per(5)
+    @posts = @posts.published.page(params[:page]).per(5)
 
     respond_with @posts
   end
 
   def show
-    @post = Post.find_by_slug(params[:id])    
-  end
-
-  protected
-
-  def fetch_post
-    @post = Post.find_by_slug(params[:id])
+    @post = Post.find_by_slug(params[:id])  
   end
 
 end

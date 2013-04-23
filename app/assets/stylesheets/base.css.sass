@@ -7,6 +7,9 @@
   margin: 0
   padding: 0
 
+html
+  width: 100%
+
 body
   font-family: "proxima-nova", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
   color: #444
@@ -22,11 +25,13 @@ header#header
   height: 140px
   margin-bottom: 40px
   +gradient-horizontal($pink, $purple)
+  
   .inner
-    width: 680px
+    max-width: 680px
     margin: 0 auto
     position: relative
     +clearfix
+    
     h1
       margin-top: 50px
       display: block
@@ -42,6 +47,7 @@ header#header
         color: #FFF
         &:hover
           text-shadow: 0 0 5px rgba(255,255,255,0.9)
+    
     p.about
       margin-top: 52px
       float: right
@@ -56,10 +62,29 @@ header#header
         &:hover
           text-shadow: 0 0 3px rgba(255,255,255,0.8)
 
+  +iphone
+    .inner
+      width: 90%
+      h1
+        float: none
+        margin: 25px 0 0 0
+        a
+          font-size: 30px
+          margin: 0
+      p.about
+        margin: 10px 0 0 0
+        display: block
+        font-size: 15px
+        line-height: 22px
+        float: none
+
 
 section.wrapper
-  width: 680px
+  max-width: 680px
   margin: 0 auto
+
+  +iphone
+    width: 90%
 
   a
     text-decoration: none
@@ -103,11 +128,15 @@ section.posts, section.detail
         &:hover
           color: $pink
           text-shadow: 0 0 3px $pinkGlow
+      +iphone
+        font-size: 20px
     
     p.post-meta
       font-size: 14px
       color: #909090
       line-height: 30px
+      +iphone
+        font-size: 13px
       a
         color: #909090
         border-bottom: 1px dotted #CCC
@@ -142,6 +171,11 @@ section.posts, section.detail
         
         p:last-child
           margin-bottom: 0
+
+      +iphone
+        img
+          max-width: 100%
+
 
 nav.pagination
   +grey-rounded

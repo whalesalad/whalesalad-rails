@@ -10,8 +10,7 @@ Whalesalad::Application.routes.draw do
 
   # Admin
   namespace :admin do
-    match '', :action => 'index'
-
+    get '', :action => 'index'
     resources :posts, :only => [:index, :new, :edit, :create, :update]
   end
   

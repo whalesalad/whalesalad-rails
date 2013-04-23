@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby "2.0.0"
 
-gem 'rails', '3.2.11'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'rails', '4.0.0.beta1'
 gem 'pg'
 gem 'haml'
 gem 'thin'
@@ -14,8 +13,8 @@ gem 'pygmentize'
 
 # Gems used only for assets and not in production
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0.beta1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
   gem 'asset_sync'
@@ -23,7 +22,9 @@ end
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
+  gem 'quiet_assets'
+  gem 'annotate'
+  gem 'bullet'
 end
 
 group :production do

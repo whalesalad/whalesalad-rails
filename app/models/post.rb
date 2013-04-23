@@ -1,14 +1,17 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :link, :slug, :published, :tag_names
+  attr_writer :tag_names
 
   has_and_belongs_to_many :tags
-
-  attr_writer :tag_names
+  
   after_save :assign_tags
 
   validates_presence_of :title, :body
 
   acts_as_url :title, :url_attribute => :slug, :sync_url => true
+
+  default_scope -> { order("created_at DESC") }
+
+  scope :published, -> { where(:published => true).includes(:tags) }
 
   def to_param
     slug

@@ -1,14 +1,19 @@
 .highlight
+  +border-radius(5px)
   border: 1px solid #DDD
   box-shadow: 0 3px 0 #EEE
   padding: 10px 20px
   margin: 0 -20px 1em -20px
+  width: 100%
+  +iphone
+    +border-radius(0)
+    border-width: 1px 0
+    overflow: scroll
 
   pre
     font-family: "ubuntu-mono", "consolas", "monaco", monospaced
     font-size: 14px
 
-  +border-radius(5px)
   .hll
     background-color: #ffffcc
   .c
